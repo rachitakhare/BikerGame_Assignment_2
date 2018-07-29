@@ -14,7 +14,7 @@ var managers;
                             var yaySound = createjs.Sound.play("yay");
                             yaySound.volume = 0.2;
                             break;
-                        case "cactus":
+                        case "cloud":
                             var thunderSound = createjs.Sound.play("thunder");
                             thunderSound.volume = 0.2;
                             break;

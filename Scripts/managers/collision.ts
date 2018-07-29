@@ -16,7 +16,7 @@ namespace managers {
                 yaySound.volume = 0.2;
                 break;
 
-                case "cactus":
+                case "cloud":
                 let thunderSound = createjs.Sound.play("thunder");
                 thunderSound.volume = 0.2;
                 break;
