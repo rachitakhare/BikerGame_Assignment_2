@@ -1,5 +1,7 @@
 //IIFE -- Immediately Invoked Function Expression
 // also called self executing anonymous function
+//<!--Rachita Khare(300986795)
+//Comp_397 Assignment-2
 (function(){
     // Game Variables
     let canvas:HTMLCanvasElement;

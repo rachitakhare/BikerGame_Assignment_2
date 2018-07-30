@@ -1,3 +1,6 @@
+//<!--Rachita Khare(300986795)
+//Comp_397 Assignment-2
+
 module managers {
     export class Game {
         public static AssetManager:createjs.LoadQueue;
