@@ -21,8 +21,10 @@ var scenes;
         // private methods
         // public methods
         Start.prototype.Start = function () {
-            this._welcomeLabel = new objects.Label("Welcome!", "60px", "Consolas", "#000000", 320, 240, true);
+            this._welcomeLabel = new objects.Label("Begin Race", "60px", "Consolas", "#000000", 320, 240, true);
             this._startButton = new objects.Button("StartButton", 320, 360, true);
+            this._background = new objects.road;
+            this._bike = new objects.bike;
             this.Main();
         };
         Start.prototype.Update = function () {
@@ -34,6 +36,8 @@ var scenes;
         };
         Start.prototype.Main = function () {
             console.log("Starting - START SCENE");
+            this.addChild(this._background);
+            this.addChild(this._bike);
             this.addChild(this._welcomeLabel);
             this.addChild(this._startButton);
             this._startButton.on("click", function () {

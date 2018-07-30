@@ -11,12 +11,14 @@ var managers;
                     object2.isColliding = true;
                     switch (object2.name) {
                         case "powerup":
-                            var yaySound = createjs.Sound.play("yay");
+                            var yaySound = createjs.Sound.play("powerup_sound");
                             yaySound.volume = 0.2;
+                            managers.Game.scoreBoard.Score += 200;
                             break;
-                        case "cloud":
+                        case "cactus":
                             var thunderSound = createjs.Sound.play("thunder");
                             thunderSound.volume = 0.2;
+                            managers.Game.scoreBoard.Lives -= 1;
                             break;
                     }
                 }

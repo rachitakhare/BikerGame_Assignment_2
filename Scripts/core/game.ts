@@ -15,10 +15,10 @@
         {id: "bike", src:"/Assets/images/bike.png"},
         {id: "road", src:"/Assets/images/road.png"},
         {id: "powerup", src:"/Assets/images/powerup.png"},
-        {id: "cloud", src:"/Assets/images/cloud.png"},
-        {id: "yay", src:"/Assets/audio/yay.ogg"},
-        {id: "thunder", src:"/Assets/audio/thunder.ogg"},
-        {id: "engine", src:"/Assets/audio/engine.ogg"}
+        {id: "cactus", src:"/Assets/images/cactus.png"},
+        {id: "powerup_sound", src:"/Assets/audio/powerup_sound.ogg"},
+        {id: "thunder", src:"/Assets/audio/thunder.mp3"},
+        {id: "engine", src:"/Assets/audio/engine.mp3"}
     ]
 
 

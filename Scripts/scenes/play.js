@@ -19,10 +19,10 @@ var scenes;
             return _this;
         }
         // private methods
-        Play.prototype._buildclouds = function () {
-            for (var count = 0; count < this._cloudNum; count++) {
-                this._clouds.push(new objects.cloud());
-                //this._clouds[count] = new objects.cloud();
+        Play.prototype._buildcactuss = function () {
+            for (var count = 0; count < this._cactusNum; count++) {
+                this._cactuss.push(new objects.cactus());
+                //this._cactuss[count] = new objects.cactus();
             }
         };
         // public methods
@@ -33,10 +33,12 @@ var scenes;
             this._bike = new objects.bike();
             this._road = new objects.road();
             this._powerup = new objects.powerup();
-            // creates an empty array of type cloud
-            this._clouds = new Array();
-            this._cloudNum = 3;
-            this._buildclouds();
+            // creates an empty array of type cactus
+            this._cactuss = new Array();
+            this._cactusNum = 2;
+            this._buildcactuss();
+            this._scoreBoard = new managers.ScoreBoard();
+            managers.Game.scoreBoard = this._scoreBoard;
             this.Main();
         };
         Play.prototype.Update = function () {
@@ -45,10 +47,13 @@ var scenes;
             this._road.Update();
             this._powerup.Update();
             managers.Collision.check(this._bike, this._powerup);
-            this._clouds.forEach(function (cloud) {
-                cloud.Update();
-                managers.Collision.check(_this._bike, cloud);
+            this._cactuss.forEach(function (cactus) {
+                cactus.Update();
+                managers.Collision.check(_this._bike, cactus);
             });
+            if (this._scoreBoard.Lives <= 0) {
+                managers.Game.CurrentState = config.Scene.END;
+            }
         };
         Play.prototype.Reset = function () {
         };
@@ -61,13 +66,15 @@ var scenes;
             this.addChild(this._road);
             // adding the powerup to the scene
             this.addChild(this._powerup);
+            for (var _i = 0, _a = this._cactuss; _i < _a.length; _i++) {
+                var cactus = _a[_i];
+                this.addChild(cactus);
+            }
             // adding the bike to the scene
             this.addChild(this._bike);
-            // adding the cloud to the scene
-            for (var _i = 0, _a = this._clouds; _i < _a.length; _i++) {
-                var cloud = _a[_i];
-                this.addChild(cloud);
-            }
+            // adding the cactus to the scene
+            this.addChild(this._scoreBoard.LivesLabel);
+            this.addChild(this._scoreBoard.ScoreLabel);
         };
         return Play;
     }(objects.Scene));

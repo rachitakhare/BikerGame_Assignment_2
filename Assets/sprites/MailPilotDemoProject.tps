@@ -196,7 +196,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/cloud.png</key>
+            <key type="filename">../images/cactus.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -320,7 +320,7 @@
         <array>
             <filename>../images/restartButton.png</filename>
             <filename>../images/startButton.png</filename>
-            <filename>../images/cloud.png</filename>
+            <filename>../images/cactus.png</filename>
             <filename>../images/powerup.png</filename>
             <filename>../images/bike1.png</filename>
             <filename>../images/bike2.png</filename>

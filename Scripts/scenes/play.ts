@@ -4,8 +4,9 @@ module scenes {
         private _bike:objects.bike;
         private _road:objects.road;
         private _powerup:objects.powerup;
-        private _clouds:objects.cloud[];
-        private _cloudNum:number;
+        private _cactuss:objects.cactus[];
+        private _cactusNum:number;
+        private _scoreBoard: managers.ScoreBoard;
         
         public engineSound:createjs.AbstractSoundInstance;
 
@@ -17,10 +18,10 @@ module scenes {
         }
 
         // private methods
-        private _buildclouds():void {
-            for (let count = 0; count < this._cloudNum; count++) {
-                this._clouds.push(new objects.cloud());
-                //this._clouds[count] = new objects.cloud();
+        private _buildcactuss():void {
+            for (let count = 0; count < this._cactusNum; count++) {
+                this._cactuss.push(new objects.cactus());
+                //this._cactuss[count] = new objects.cactus();
             }
         }
 
@@ -35,12 +36,14 @@ module scenes {
             this._road = new objects.road();
             this._powerup = new objects.powerup();
 
-            // creates an empty array of type cloud
-            this._clouds = new Array<objects.cloud>();
-            this._cloudNum = 3;
+            // creates an empty array of type cactus
+            this._cactuss = new Array<objects.cactus>();
+            this._cactusNum = 2;
 
-            this._buildclouds();
+            this._buildcactuss();
            
+            this._scoreBoard = new managers.ScoreBoard();
+            managers.Game.scoreBoard = this._scoreBoard;
             this.Main();
         }
 
@@ -51,11 +54,14 @@ module scenes {
 
             managers.Collision.check(this._bike, this._powerup);
 
-            this._clouds.forEach(cloud => {
-                cloud.Update();
-                managers.Collision.check(this._bike, cloud);
+            this._cactuss.forEach(cactus => {
+                cactus.Update();
+                managers.Collision.check(this._bike, cactus);
             });
             
+            if(this._scoreBoard.Lives <= 0){
+                managers.Game.CurrentState = config.Scene.END;
+            }
         }
 
         public Reset():void {
@@ -75,13 +81,15 @@ module scenes {
             // adding the powerup to the scene
             this.addChild(this._powerup);
 
+            for (const cactus of this._cactuss) {
+                this.addChild(cactus);
+            }
             // adding the bike to the scene
             this.addChild(this._bike);
 
-            // adding the cloud to the scene
-            for (const cloud of this._clouds) {
-                this.addChild(cloud);
-            }
+            // adding the cactus to the scene
+            this.addChild(this._scoreBoard.LivesLabel);
+            this.addChild(this._scoreBoard.ScoreLabel);
         }
     }
 }

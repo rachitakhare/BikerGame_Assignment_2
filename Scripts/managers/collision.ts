@@ -12,13 +12,15 @@ namespace managers {
           object2.isColliding = true;
             switch(object2.name) {
                 case "powerup":
-                let yaySound = createjs.Sound.play("yay");
+                let yaySound = createjs.Sound.play("powerup_sound");
                 yaySound.volume = 0.2;
+                managers.Game.scoreBoard.Score += 200;
                 break;
 
-                case "cloud":
+                case "cactus":
                 let thunderSound = createjs.Sound.play("thunder");
                 thunderSound.volume = 0.2;
+                managers.Game.scoreBoard.Lives -=1;
                 break;
             }
 
